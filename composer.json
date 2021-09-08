@@ -1,0 +1,12 @@
+{
+    "name": "ebukaodini/pagefinancials-recruitment-test",
+    "description": "A wallet system with paystack integration",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Ebuka Odini",
+            "email": "ebukaodini@gmail.com"
+        }
+    ],
+    "require": {}
+}
