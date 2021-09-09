@@ -5,17 +5,12 @@ namespace Utils;
 use Exception;
 use PDO;
 use PDOException;
-use Symfony\Component\Dotenv\Dotenv;
 
 class Database
 {
   public static function connect()
   {
     try {
-      // load environment data
-      $dotenv = new Dotenv();
-      $dotenv->load(__DIR__.'/../.env');
-
       // get db environment data
       $url = $_ENV['JAWSDB_MARIA_URL'];
       $dbparts = parse_url($url);
