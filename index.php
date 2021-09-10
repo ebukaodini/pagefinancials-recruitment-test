@@ -18,7 +18,7 @@ try {
   $dotenv = new Dotenv();
   $dotenv->load(__DIR__ . '/.env');
 
-  // exit(json_encode($_SERVER));
+  exit(json_encode($_SERVER));
 
   // set timezone
   date_default_timezone_set($_ENV['TIMEZONE']);
@@ -81,7 +81,7 @@ try {
 } catch (\Throwable $th) {
 
   // application wide error handler
-  error_log($th->getMessage() . "\r\n", 3, 'error.log');
+  error_log($th->getMessage() . "\r\n", 0, 'error.log');
   error_log(json_encode(debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT)) . "\r\n", 3, 'error.log');
   Response::error(code: 500, message: 'Server Error');
 }
