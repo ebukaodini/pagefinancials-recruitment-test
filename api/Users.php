@@ -95,18 +95,26 @@ class Users
     Response::error(message: 'Validation error', data: $errorData);
     
     // sanitize data
-    // $data = [
-    //   'email' => $email,
-    //   'password' => $password
-    // ];
+    $data = [
+      'email' => $email,
+      'password' => $password,
+      'firstname' => $firstname,
+      'lastname' => $lastname
+    ];
 
-    // $filters = [
-    //   'email'    => 'trim|escape|lowercase',
-    //   'password' => 'trim'
-    // ];
+    $filters = [
+      'email'    => 'trim|escape|lowercase',
+      'password' => 'trim',
+      'firstname' => 'trim|escape|capitalize',
+      'lastname' => 'trim|escape|capitalize'
+    ];
 
-    // $sanitizer  = new Sanitizer($data, $filters);
-    // [$email, $password] = $sanitizer->sanitize();
+    $sanitizer  = new Sanitizer($data, $filters);
+    $sanitized = $sanitizer->sanitize();
+    $email = $sanitized['email'];
+    $password = $sanitized['password'];
+    $firstname = $sanitized['firstname'];
+    $lastname = $sanitized['lastname'];
     
     // store the data in the database
     $conn = Database::connect();
