@@ -12,7 +12,13 @@ Ensure you document your APIs using Postman and host them online.
 Kindly confirm your participation by responding to this mail.
 Please note, that the timeline for this test is 48 hours from receipts. 
 
-## Local Server
+## To run on local server
 ```bash
 php -S localhost:8080 server.php
 ```
+
+## API Documentation
+https://documenter.getpostman.com/view/6884204/U16kpQ6p
+
+### Note
+App is live and is hosted on [Heroku](https://pagefinancials-test.herokuapp.com/)

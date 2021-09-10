@@ -38,7 +38,7 @@ try {
 
     case '/':
       Request::get();
-      Response::success(message: 'Welcome to the Forsterfields & Griffins Technology Wallet API.');
+      Response::success(message: 'Welcome to the Forsterfields & Griffins Technology Wallet API. Read the API Documentation here: https://documenter.getpostman.com/view/6884204/U16kpQ6p');
       break;
 
     case '/api/users/create':
