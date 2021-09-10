@@ -7,7 +7,7 @@ use Exception;
 class Paystack
 {
 
-  public static function initiatePayment(string $email, int $amountInKobo, string $reference, string $callbackUrl)
+  public static function initiatePayment(string $email, string $walletId, int $amountInKobo, string $reference, string $callbackUrl)
   {
     $curl = curl_init();
     curl_setopt_array($curl, array(
@@ -19,6 +19,10 @@ class Paystack
         'email' => $email,
         'reference' => $reference,
         'callback_url' => $callbackUrl,
+        'metadata' => [
+          'email' => $email,
+          'wallet_id' => $walletId
+        ]
       ]),
       CURLOPT_HTTPHEADER => [
         "authorization: Bearer " . $_ENV['PAYSTACK_SECRET_KEY'],
@@ -42,10 +46,10 @@ class Paystack
       throw new Exception($tranx['message']);
     }
     // redirect to page so User can pay
-    header('Location: ' . $tranx['data']['authorization_url']);
+    return $tranx['data']['authorization_url'];
   }
 
-  public function verifyPayment(string $reference)
+  public static function verifyPayment(string $reference)
   {
     $result = array();
     //The parameter after verify/ is the transaction reference to be verified
@@ -81,10 +85,7 @@ class Paystack
 						@ The authorization will only work with this particular email.
 						@ If the user changes his email on your system, it will be unusable
 						*/
-            return [
-              "flag" => true,
-              "data" => $result['data']
-            ];
+            return $result['data'];
           } else {
             // the transaction was not successful, do not deliver value'
             throw new Exception("Transaction was not successful: Last gateway response was: " . $result['data']['gateway_response']);
