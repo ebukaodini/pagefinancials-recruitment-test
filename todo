@@ -7,6 +7,6 @@
 ✔ authenticate users @done(21-09-09 19:21)
 ✔ implement the create account endpoint @done(21-09-10 03:32)
 ✔ implement the login endpoint @done(21-09-10 03:32)
-☐ implement the fund wallet endpoint
-☐ implement the balance enquiry endpoint
-☐ implement the transaction history endpoint
+✔ implement the fund wallet endpoint @done(21-09-10 11:19)
+✔ implement the balance enquiry endpoint @done(21-09-10 11:19)
+✔ implement the transaction history endpoint @done(21-09-10 11:19)
