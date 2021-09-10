@@ -14,9 +14,11 @@ include_once 'vendor/autoload.php';
 
 try {
 
-  // load environment data
-  $dotenv = new Dotenv();
-  $dotenv->load(__DIR__ . '/.env');
+  // load environment data if on local device
+  if ($_SERVER['HTTP_HOST'] == 'localhost:8080') {
+    $dotenv = new Dotenv();
+    $dotenv->load(__DIR__ . '/.env');
+  }
 
   exit(json_encode($_SERVER));
 
