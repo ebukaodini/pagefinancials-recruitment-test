@@ -27,7 +27,7 @@ class Auth
   public static function authenticateUser()
   {
     try {
-      $jwt = $_SERVER['AuthToken'];
+      $jwt = $_SERVER['HTTP_AUTHTOKEN'];
       $key = $_ENV['JWT_SECRET'];
       $payload = JWT::decode($jwt, $key, array('HS256'));
       self::$userId = $payload['userId'];
@@ -35,7 +35,22 @@ class Auth
 
       return true;
     } catch (\Throwable $th) {
-      Response::error(message: $th->getMessage(), code: 401);
+      Response::error(message: 'Authentication error. ' . $th->getMessage(), code: 401);
     }
+  }
+
+  public static function hashPassword(string $password)
+  {
+    $options = [
+      'cost' => 10
+    ];
+
+    $password =  password_hash($password, PASSWORD_BCRYPT, $options);
+    return $password;
+  }
+
+  public static function verifyPassword(string $password, string $hash)
+  {
+    return password_verify($password, $hash);
   }
 }
