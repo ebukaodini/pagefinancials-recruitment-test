@@ -20,8 +20,6 @@ try {
     $dotenv->load(__DIR__ . '/.env');
   }
 
-  exit(json_encode($_SERVER));
-
   // set timezone
   date_default_timezone_set($_ENV['TIMEZONE']);
 
