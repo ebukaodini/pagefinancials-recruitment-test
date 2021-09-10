@@ -81,7 +81,7 @@ try {
 } catch (\Throwable $th) {
 
   // application wide error handler
-  error_log($th->getMessage() . "\r\n", 0, 'error.log');
-  error_log(json_encode(debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT)) . "\r\n", 3, 'error.log');
+  error_log($th->getMessage() . "\r\n", 3, 'error.log');
+  error_log(json_encode(debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT, 10)) . "\r\n", 3, 'error.log');
   Response::error(code: 500, message: 'Server Error');
 }
