@@ -12,7 +12,7 @@ class Auth
   public static function encode(int $userId)
   {
     $issuedAt = time();
-    $expirationTime = $issuedAt + 60;  // jwt valid for 60 seconds from the issued time
+    $expirationTime = $issuedAt + (3600 * 6);  // jwt valid for 6 hour from the issued time
     $payload = array(
       'userId' => $userId,
       'iat' => $issuedAt,
@@ -30,7 +30,7 @@ class Auth
       $jwt = $_SERVER['HTTP_AUTHTOKEN'];
       $key = $_ENV['JWT_SECRET'];
       $payload = JWT::decode($jwt, $key, array('HS256'));
-      self::$userId = $payload['userId'];
+      self::$userId = $payload->userId;
       self::$isAuthenticated = true;
 
       return true;

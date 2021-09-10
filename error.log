@@ -1,0 +1,29 @@
+Utils\Response::error(): Argument #2 ($data) must be of type array, null given, called in /home/ebuka/Desktop/Jobs/recruitments/pagefinancials-recruitment-test/api/Users.php on line 96
+count(): Argument #1 ($value) must be of type Countable|array, null given
+Utils\Auth::verifyPassword(): Argument #1 ($password) must be of type string, null given, called in /home/ebuka/Desktop/Jobs/recruitments/pagefinancials-recruitment-test/api/Users.php on line 184
+Utils\Auth::verifyPassword(): Argument #2 ($hash) must be of type string, null given, called in /home/ebuka/Desktop/Jobs/recruitments/pagefinancials-recruitment-test/api/Users.php on line 186
+Call to a member function prepare() on null
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+get_class_methods(): Argument #1 ($object_or_class) must be an object or a valid class name, null given
+get_class_methods(): Argument #1 ($object_or_class) must be an object or a valid class name, null given
+[{"file":"\/home\/ebuka\/Desktop\/Jobs\/recruitments\/pagefinancials-recruitment-test\/server.php","line":34,"function":"include"}]
+get_class_methods(): Argument #1 ($object_or_class) must be an object or a valid class name, null given
+[{"file":"\/home\/ebuka\/Desktop\/Jobs\/recruitments\/pagefinancials-recruitment-test\/server.php","line":34,"function":"include"}]
+get_class_methods(): Argument #1 ($object_or_class) must be an object or a valid class name, null given
+[{"file":"\/home\/ebuka\/Desktop\/Jobs\/recruitments\/pagefinancials-recruitment-test\/server.php","line":35,"function":"include"}]
+get_class_methods(): Argument #1 ($object_or_class) must be an object or a valid class name, null given
+[{"file":"\/home\/ebuka\/Desktop\/Jobs\/recruitments\/pagefinancials-recruitment-test\/server.php","line":35,"function":"include_once"}]
+get_class_methods(): Argument #1 ($object_or_class) must be an object or a valid class name, null given
+[{"file":"\/home\/ebuka\/Desktop\/Jobs\/recruitments\/pagefinancials-recruitment-test\/server.php","line":35,"function":"include_once"}]
+get_class_methods(): Argument #1 ($object_or_class) must be an object or a valid class name, null given
+[{"file":"\/home\/ebuka\/Desktop\/Jobs\/recruitments\/pagefinancials-recruitment-test\/server.php","line":34,"function":"include"}]
+get_class_methods(): Argument #1 ($object_or_class) must be an object or a valid class name, null given
+[{"file":"\/home\/ebuka\/Desktop\/Jobs\/recruitments\/pagefinancials-recruitment-test\/server.php","line":34,"function":"include"}]
+get_class_methods(): Argument #1 ($object_or_class) must be an object or a valid class name, null given
+[{"file":"\/home\/ebuka\/Desktop\/Jobs\/recruitments\/pagefinancials-recruitment-test\/server.php","line":34,"function":"include"}]
+get_class_methods(): Argument #1 ($object_or_class) must be an object or a valid class name, null given
+[{"file":"\/home\/ebuka\/Desktop\/Jobs\/recruitments\/pagefinancials-recruitment-test\/server.php","line":34,"function":"include"}]
+get_class_methods(): Argument #1 ($object_or_class) must be an object or a valid class name, null given
+[{"file":"\/home\/ebuka\/Desktop\/Jobs\/recruitments\/pagefinancials-recruitment-test\/server.php","line":34,"function":"include"}]
+get_class_methods(): Argument #1 ($object_or_class) must be an object or a valid class name, null given
+[{"file":"\/home\/ebuka\/Desktop\/Jobs\/recruitments\/pagefinancials-recruitment-test\/server.php","line":34,"function":"include"}]

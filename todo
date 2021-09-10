@@ -1,4 +1,12 @@
 ✔ initiate composer @done(21-09-08 18:28)
 ✔ get the paystack package and any other required package @done(21-09-08 22:18)
 ✔ structure the application @done(21-09-08 22:18)
-☐ use htaccess to handle access and restrictions to files
+✔ use htaccess to handle access and restrictions to files @done(21-09-09 18:58)
+✔ define application routes @done(21-09-09 18:58)
+✔ create database tables @done(21-09-10 03:32)
+✔ authenticate users @done(21-09-09 19:21)
+✔ implement the create account endpoint @done(21-09-10 03:32)
+✔ implement the login endpoint @done(21-09-10 03:32)
+☐ implement the fund wallet endpoint
+☐ implement the balance enquiry endpoint
+☐ implement the transaction history endpoint

@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Validation;
 use Utils\Auth;
 use Utils\Database;
 use Utils\Response;
+use Waavi\Sanitizer\Sanitizer;
 
 class Users
 {
@@ -24,7 +25,6 @@ class Users
 
     // validate the data
     $validator = Validation::createValidator();
-    // $violations = 
     $errors[] = $validator->validate($firstname, [
       new Length([
         'min' => 2,
@@ -92,8 +92,22 @@ class Users
       }
     }
     if (count($errorData) > 0)
-      Response::error(message: 'Validation error', data: $errorData);
+    Response::error(message: 'Validation error', data: $errorData);
+    
+    // sanitize data
+    // $data = [
+    //   'email' => $email,
+    //   'password' => $password
+    // ];
 
+    // $filters = [
+    //   'email'    => 'trim|escape|lowercase',
+    //   'password' => 'trim'
+    // ];
+
+    // $sanitizer  = new Sanitizer($data, $filters);
+    // [$email, $password] = $sanitizer->sanitize();
+    
     // store the data in the database
     $conn = Database::connect();
 
@@ -104,8 +118,8 @@ class Users
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
     $response = $stmt->fetchAll();
-    if ($response[0]['email'] > 0){
-      Response::error(message: "Email \"{$email}\" already exist in database");
+    if ($response[0]['email'] > 0) {
+      Response::error(message: "Email \"{$email}\" already exist in database.");
     }
 
     // hash password
@@ -135,13 +149,49 @@ class Users
 
   public static function login()
   {
-    
     // get the user data
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+
     // sanitize data
+    $data = [
+      'email' => $email,
+      'password' => $password
+    ];
+
+    $filters = [
+      'email'    => 'trim|escape|lowercase',
+      'password' => 'trim'
+    ];
+
+    $sanitizer  = new Sanitizer($data, $filters);
+    $sanitized = $sanitizer->sanitize();
+    $email = $sanitized['email'];
+    $password = $sanitized['password'];
+    
     // get the user data from the database
+    $conn = Database::connect();
+
+    $query = "SELECT id, password FROM users WHERE email = '$email'";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $response = $stmt->fetchAll();
+
+    $dbPasswordHash = $response[0]['password'];
+
     // compare db password hash with the submitted password
-    // if true,
+    if (Auth::verifyPassword($password, $dbPasswordHash) == true) {
+      // if true,
+      // prepare jwt token
+      $token = Auth::encode($response[0]['id']);
+
       // return success response with jwt token
-    // else return response error
+      Response::success(message: 'Login successful.', data: ['jwt-token' => $token]);
+    } else {
+      // else return response error
+      Response::error(message: 'Login failed. Please try again.');
+    }
   }
 }
